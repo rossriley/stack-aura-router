@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Aura\Router\Router;
 
-class Router implements HttpKernelInterface {
+class RequestRouter implements HttpKernelInterface {
 
     private $app;
 
@@ -30,9 +30,14 @@ class Router implements HttpKernelInterface {
             return $this->app->handle($request, $type, $catch);
         }
 
-        $route = $this->router->match($request->getPathInfo(),$request->server);
-        $request->attributes->set("_route", $route->params);
+        $route = $this->router->match($request->getPathInfo(),$request->server->all());
+        if($route) {
+            $params = $route->params;
+            $params["_name"] = $route->name;
+            $params["_route"] = $route->path;
+            $request->attributes->set("route", $params);
+        }
 
-        return $app->handle($request, $type, $catch);
+        return $this->app->handle($request, $type, $catch);
     }
 }

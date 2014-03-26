@@ -10,10 +10,7 @@ class TestApp implements HttpKernelInterface {
 
     public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
     {
-        if($request->getRequestUri() == "/") return new Response("public");
-        if($request->getRequestUri() == "/protected") return new Response("protected");
-        if($request->getRequestUri() == "/anon") return new Response("anonymous");
-        return new Response("invalid");
+        return new Response(serialize($request->attributes->all()));
     }
 
 
