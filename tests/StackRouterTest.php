@@ -8,7 +8,8 @@ use Aura\Router\RouterFactory;
 class StackRouterTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testSimpleRoute() {
+    public function testSimpleRoute()
+    {
         $testapp = new Fixtures\TestApp;
         $router = $this->getRouter();
         $router->add('default', '/{controller}/{action}/{id}');
@@ -21,7 +22,8 @@ class StackRouterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("123",  $params["route"]["id"]);
     }
 
-    public function testComplexRoute() {
+    public function testComplexRoute()
+    {
         $testapp = new Fixtures\TestApp;
         $router = $this->getRouter();
         $router->add('complex', '/complex/{controller}/{action}/{id}{format}')
@@ -38,7 +40,8 @@ class StackRouterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(".json",    $params["route"]["format"]);
     }
 
-    public function testResourceRoute() {
+    public function testResourceRoute() ]
+    {
         $router = $this->getRouter();
         $router->attachResource('resources', '/resources');
         $testapp = new Fixtures\TestApp;
@@ -49,7 +52,8 @@ class StackRouterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("GET",           $params["route"]["REQUEST_METHOD"]);
     }
 
-    protected function getRouter() {
+    protected function getRouter()
+    {
         $router_factory = new RouterFactory;
         $router = $router_factory->newInstance();
         return $router;

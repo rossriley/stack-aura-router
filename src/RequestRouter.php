@@ -6,7 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Aura\Router\Router;
 
-class RequestRouter implements HttpKernelInterface {
+class RequestRouter implements HttpKernelInterface
+{
 
     private $app;
 
