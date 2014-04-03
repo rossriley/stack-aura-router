@@ -36,7 +36,6 @@ First up configure your routes:
     $router = $router_factory->newInstance();
     $router->setValues(['controller' => 'YourNamespace\Controller\Main']);
     $router->add("homepage", '/'')->addValues(["action"=>"index"]);
-    $router->add('list', '')->addValues(["action"=>"offers"]);
     $router->add("signup", '/signup')->addValues(["action"=>"signup"]);
     ......
 
@@ -73,4 +72,19 @@ Since your Stack app handles an `HttpKernelInterface $request` instance, your ro
 
 As you'll see this output matches the route you described in your `routes.php` file.
 
+Similarly, the signup route would output the following:
+
+    $route = $request->attributes->get("route");
+    // This outputs with a request to /signup
+    Array (
+        [controller] => YourNamespace\Controller\Main
+        [action] => signup
+        [_name] => signup
+        [_route] => /signup
+    )
+
+
+### Contributions Welcome
+
+This is a relatively new project in early alpha stage, although it's being used in the wil by a few fairly large projects. Pull requests / ideas for improvement are most welcome.
 
