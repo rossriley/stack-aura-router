@@ -86,5 +86,5 @@ Similarly, the signup route would output the following:
 
 ### Contributions Welcome
 
-This is a relatively new project in early alpha stage, although it's being used in the wil by a few fairly large projects. Pull requests / ideas for improvement are most welcome.
+This is a relatively new project in early alpha stage, although it's being used in the wild by a few fairly large projects. Pull requests / ideas for improvement are most welcome.
 
